@@ -1,0 +1,246 @@
+/* VedaAI Assessment Creator - Global CSS Design System */
+
+:root {
+  /* Default Dark Mode HSL tokens */
+  --bg-primary: hsl(0 0% 0%);
+  --bg-secondary: hsl(0 0% 5%);
+  --bg-tertiary: hsl(0 0% 10%);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-light: #cbd5e1;
+  
+  --card-background: rgba(15, 23, 42, 0.45);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover-border: rgba(255, 255, 255, 0.15);
+  
+  --input-background: rgba(15, 23, 42, 0.6);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-focus-bg: rgba(15, 23, 42, 0.85);
+
+  /* Neon HSL Accent Colors */
+  --accent-primary: 250 85% 65%; /* Vivid Indigo */
+  --accent-secondary: 290 80% 60%; /* Radiant Violet */
+  --accent-cyan: 190 90% 50%; /* Electric Cyan */
+  
+  /* System State HSL Badges */
+  --state-easy: 145 75% 40%;
+  --state-easy-bg: 145 75% 95%;
+  --state-easy-dark-bg: 145 40% 12%;
+  
+  --state-medium: 35 90% 48%;
+  --state-medium-bg: 35 90% 95%;
+  --state-medium-dark-bg: 35 40% 12%;
+  
+  --state-hard: 0 85% 55%;
+  --state-hard-bg: 0 85% 96%;
+  --state-hard-dark-bg: 0 45% 12%;
+
+  /* Borders and Shadows */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.2);
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] {
+  --bg-primary: hsl(210 30% 96%);
+  --bg-secondary: hsl(0 0% 100%);
+  --bg-tertiary: hsl(210 20% 90%);
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #1e293b;
+  
+  --card-background: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-border: rgba(0, 0, 0, 0.14);
+  
+  --input-background: rgba(255, 255, 255, 0.95);
+  --input-border: rgba(0, 0, 0, 0.12);
+  --input-focus-bg: #ffffff;
+  
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: inherit;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-primary) / 0.4);
+}
+
+/* Global Gradient Text helper */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--accent-cyan)), hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+/* PRINT STYLESHEET (MANDATORY FOR GORGEOUS PDF EXPORT) */
+@media print {
+  body, html {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide everything except the exam paper container */
+  .no-print, 
+  header, 
+  footer, 
+  nav, 
+  aside,
+  .action-bar, 
+  .dashboard-controls, 
+  .form-section, 
+  .toast-container,
+  button,
+  [class*="sidebar"],
+  [class*="headerBar"],
+  [class*="greetingBanner"],
+  [class*="bottomNavBar"],
+  [class*="mobileFab"],
+  [class*="desktopBottomCtaWrapper"] {
+    display: none !important;
+  }
+
+  /* Reset layout offsets of Next.js CSS-Module containers during print */
+  div[class*="appLayout"],
+  main[class*="mainContent"],
+  div[class*="viewerShell"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  @page {
+    size: auto;
+    margin: 15mm 20mm; /* Add physical margins to every page so text doesn't hit the top edge on page 2 */
+  }
+
+  /* Reset layout margins for full-page PDF rendering */
+  .print-page {
+    margin: 0 !important;
+    padding: 0 !important; /* Padding removed because @page margin handles it for all pages */
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: white !important;
+    color: #000000 !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+  }
+
+  .print-page::before {
+    display: none !important;
+  }
+
+  /* Ensure questions don't get chopped mid-sentence across page boundaries */
+  /* Note: sectionContainer MUST allow page breaks so it doesn't push entire sections to new pages leaving huge blank gaps */
+  div[class*="sectionContainer"] {
+    page-break-inside: auto !important;
+  }
+
+  div[class*="questionItem"] {
+    page-break-inside: avoid !important;
+  }
+
+  /* Forces browsers to print backgrounds if enabled, but keeps structure black/white */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
