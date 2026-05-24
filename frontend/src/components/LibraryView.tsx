@@ -21,7 +21,7 @@ export default function LibraryView() {
 
   const fetchFiles = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/library');
+      const response = await fetch('https://ai-question-paper.onrender.com/api/library');
       if (response.ok) {
         const data = await response.json();
         setFiles(data);
@@ -42,7 +42,7 @@ export default function LibraryView() {
     if (!window.confirm("Are you sure you want to delete this file? This action cannot be undone.")) return;
 
     try {
-      const response = await fetch(`http://localhost:4000/api/library/${id}`, {
+      const response = await fetch(`https://ai-question-paper.onrender.com/api/library/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -136,7 +136,7 @@ export default function LibraryView() {
                 
                 <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
                   <a 
-                    href={`http://localhost:4000${file.path}`} 
+                    href={`https://ai-question-paper.onrender.com${file.path}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className={styles.blackPillBtn}

@@ -16,7 +16,7 @@ export default function HistoryPanel() {
   // Fetch past assessments from backend database
   const fetchHistory = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/assignments');
+      const response = await fetch('https://ai-question-paper.onrender.com/api/assignments');
       if (!response.ok) throw new Error('Failed to load history list');
       
       const data = await response.json();
@@ -54,7 +54,7 @@ export default function HistoryPanel() {
     if (!window.confirm("Are you sure you want to delete this assessment?")) return;
 
     try {
-      const response = await fetch(`http://localhost:4000/api/assignments/${id}`, {
+      const response = await fetch(`https://ai-question-paper.onrender.com/api/assignments/${id}`, {
         method: 'DELETE'
       });
 

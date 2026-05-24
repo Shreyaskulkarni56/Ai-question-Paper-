@@ -41,7 +41,7 @@ export default function AssessmentViewer() {
   const handleEditSave = async () => {
     dispatch(setLoading(true));
     try {
-      const response = await fetch(`http://localhost:4000/api/assignments/${current._id}`, {
+      const response = await fetch(`https://ai-question-paper.onrender.com/api/assignments/${current._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editForm)
@@ -68,7 +68,7 @@ export default function AssessmentViewer() {
     dispatch(clearGenerationJob());
 
     try {
-      const response = await fetch(`http://localhost:4000/api/assignments/${current._id}/regenerate`, {
+      const response = await fetch(`https://ai-question-paper.onrender.com/api/assignments/${current._id}/regenerate`, {
         method: 'POST',
       });
 

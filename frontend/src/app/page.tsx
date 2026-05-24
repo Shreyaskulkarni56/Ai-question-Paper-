@@ -81,7 +81,7 @@ export default function Dashboard() {
   // Initialize WebSockets
   useEffect(() => {
     // Connect to Backend Socket.io Server
-    const socket = io('http://localhost:4000', {
+    const socket = io('https://ai-question-paper.onrender.com', {
       transports: ['websocket'],
       reconnectionAttempts: 5,
       reconnectionDelay: 2000
@@ -131,7 +131,7 @@ export default function Dashboard() {
   // Helper to fetch list logs
   const refreshHistory = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/assignments');
+      const response = await fetch('https://ai-question-paper.onrender.com/api/assignments');
       if (response.ok) {
         const data = await response.json();
         dispatch(setAssignments(data));
@@ -194,7 +194,7 @@ export default function Dashboard() {
     if (!window.confirm("Are you sure you want to delete this assessment?")) return;
 
     try {
-      const response = await fetch(`http://localhost:4000/api/assignments/${id}`, {
+      const response = await fetch(`https://ai-question-paper.onrender.com/api/assignments/${id}`, {
         method: 'DELETE'
       });
 
