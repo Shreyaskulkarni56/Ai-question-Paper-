@@ -39,7 +39,8 @@ export default function CreateForm() {
   const [rows, setRows] = useState<QuestionRow[]>([
     { id: '1', type: 'mcq', count: 4, marks: 1 },
     { id: '2', type: 'short', count: 3, marks: 2 },
-    { id: '3', type: 'diagram', strokeWidth: 1 } as any // custom default diagram row
+    { id: '3', type: 'diagram', count: 5, marks: 5 },
+    { id: '4', type: 'numerical', count: 5, marks: 5 }
   ]);
 
   useEffect(() => {

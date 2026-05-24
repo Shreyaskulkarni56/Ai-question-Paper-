@@ -82,7 +82,6 @@ export default function Dashboard() {
   useEffect(() => {
     // Connect to Backend Socket.io Server
     const socket = io('https://ai-question-paper.onrender.com', {
-      transports: ['websocket'],
       reconnectionAttempts: 5,
       reconnectionDelay: 2000
     });
